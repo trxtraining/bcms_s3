@@ -15,8 +15,7 @@ module BcmsS3
 		config.to_prepare do
       Cms::ContentController.send(:include, Cms::S3::ContentController)
       Cms::ApplicationController.send(:include, Cms::S3::ApplicationController)
-      # ensure S3 storage disabled by default
-      Cms::S3.enabled = false if Cms::S3.enabled.nil?
+
       # ensure heroku caching disabled by default
       Cms::S3.heroku_caching = false if Cms::S3.heroku_caching.nil?
       # function to set domain prefix without url to 'www' is disabled by default

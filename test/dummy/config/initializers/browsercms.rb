@@ -1,1 +1,1 @@
-Cms::S3.enabled = true
+# No configuration required here

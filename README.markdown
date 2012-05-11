@@ -8,8 +8,12 @@ A [BrowserCMS](http://www.browsercms.org) module to allow storage of images and 
 * Option to change caching to suit heroku and/or use 'www' as the prefix for the non-cms site.
 
 ## Using S3 for file storage
-To enable S3 file storage set Cms::S3.enabled in config/initializers/browsercms.rb (create this if it does not exist) to true.  Ensure that you as provide a s3.yml file that contains your credentials and bucket.
-This should be in the following format
+
+Adding this gem to your project will automatically configure the CMS to use AWS for storage. If you want to add the gem, but keep using the existing filesystem, configure the following in your config/application.rb.
+
+    config.cms.attachments.storage = :filesystem	# This gems sets this value to :s3 when required.
+
+Create a config/s3.yml file that contains your credentials and bucket. This should be in the following format:
 
     access_key_id: your AWS access key
     secret_access_key: your AWS secret access key
