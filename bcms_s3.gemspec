@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.rubyforge_project = s.name
 
-  s.add_dependency("right_aws", "~> 3.0.4")
+  s.add_dependency("aws-sdk", "~> 1.5.0")
   s.add_dependency("browsercms", "~> 3.5.0.alpha")
 end
 

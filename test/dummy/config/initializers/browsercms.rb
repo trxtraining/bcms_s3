@@ -1,0 +1,1 @@
+Cms::S3.enabled = true
