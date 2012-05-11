@@ -19,7 +19,28 @@ Create a config/s3.yml file that contains your credentials and bucket. This shou
     secret_access_key: your AWS secret access key
     bucket: your unique bucket name
 
+### Configuring S3
+
+Before you can upload files, you will need to create an S3 bucket (one or more) and configure that. You can configure in either:
+	
+	# config/s3.yml 
+	bucket: your_project_bucket_name
+
+Which will use the same bucket in development, testing and production. Or in an environment file (if you want buckets for each environment)
+
+	# config/environments/production.rb
+	config.cms.attachments.s3_bucket = "your_project_bucket_production"
+	
+	# config/environments/development.rb
+	config.cms.attachments.s3_bucket = "your_project_bucket_development"
+
+## Remaining todos
+
+1. cname's don't work currently
+2. Attachments are public
+
 ## Using this module with [Heroku](http://heroku.com)
+
 If using this module in conjunction with deployment on heroku you should probably turning heroku caching on by setting Cms::S3.heroku_caching in config/initializers/browsercms.rb to true.
 
 In order to avoid putting your secret AWS key in the s3.yml file, you can take advantage of [heroku's config vars](http://docs.heroku.com/config-vars). Use ERB to read the values from the environment.  This way you can safely commit your s3.yml file to the repository without revealing your amazon credentials.
