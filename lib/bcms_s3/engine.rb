@@ -18,6 +18,7 @@ module BcmsS3
 
       # ensure heroku caching disabled by default
       Cms::S3.heroku_caching = false if Cms::S3.heroku_caching.nil?
+      
       # function to set domain prefix without url to 'www' is disabled by default
       Cms::S3.www_domain_prefix = false if Cms::S3.www_domain_prefix.nil?
 
