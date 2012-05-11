@@ -2,10 +2,24 @@
 
 A [BrowserCMS](http://www.browsercms.org) module to allow storage of images and files on the Amazon S3 storage facility
 
+Note: This is fork of the original [bcms_s3 project](https://github.com/aunderwo/bcms_s3). It has been updated to work with BrowserCMS 3.5.0 and will be published as a gem named bcms_aws_s3 (mainly due to gem ownership).
+
 ## Features
 
-* Allows uploaded files to be stored on Amazon S3.
+* Allows uploaded files to be stored on Amazon S3. 
 * Option to change caching to suit heroku and/or use 'www' as the prefix for the non-cms site.
+
+Note that all file uploaded here are **publicly accessible** on AWS S3, though the paths are pretty hard to guess.
+
+## Installation
+
+	$ gem install bcms_aws_s3
+
+And the following to your gem file
+	
+	gem "bcms_aws_s3"
+
+Create a config/s3.yml with your credentials (see below). All files uploaded to the CMS will not be pushed and stored on Amazon s3.
 
 ## Using S3 for file storage
 

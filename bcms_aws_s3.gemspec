@@ -3,13 +3,13 @@ $:.push File.expand_path("../lib", __FILE__)
 require "bcms_s3/version"
 
 Gem::Specification.new do |s|
-  s.name        = "bcms_s3"
+  s.name        = "bcms_awss3"
   s.version     = BcmsS3::VERSION
 
   s.files = Dir["{app,config,db,lib}/**/*"]
   s.authors = ["BrowserMedia", "Anthony Underwood", "Neil Middleton"]
-  s.description = %q{An S3 module for BrowserCMS}
-  s.summary = %q{S3 integration for BrowserCMS. A module that stores attachments on Amazon S3.}
+  s.summary = %q{An S3 module for BrowserCMS}
+  s.description = %q{A BrowserCMS module that stores attachments on Amazon S3 rather than on the filesystem.}
   s.email = %q{github@browsermedia.com}
   s.extra_rdoc_files = [
     "README.markdown"
