@@ -3,7 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 require "bcms_s3/version"
 
 Gem::Specification.new do |s|
-  s.name        = "bcms_awss3"
+  s.name        = "bcms_aws_s3"
   s.version     = BcmsS3::VERSION
 
   s.files = Dir["{app,config,db,lib}/**/*"]
