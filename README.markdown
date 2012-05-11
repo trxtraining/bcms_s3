@@ -1,4 +1,12 @@
-# A [BrowserCMS](http://www.browsercms.org) module to allow storage of images and files on the Amazon S3 storage facility
+# Overview
+
+A [BrowserCMS](http://www.browsercms.org) module to allow storage of images and files on the Amazon S3 storage facility
+
+## Features
+
+* Allows uploaded files to be stored on Amazon S3.
+* Option to change caching to suit heroku and/or use 'www' as the prefix for the non-cms site.
+
 ## Using S3 for file storage
 To enable S3 file storage set Cms::S3.enabled in config/initializers/browsercms.rb (create this if it does not exist) to true.  Ensure that you as provide a s3.yml file that contains your credentials and bucket.
 This should be in the following format
@@ -38,6 +46,8 @@ If you've set up CNAMES in your DNS to point to your bucket, then you can enable
 1. The s3.yml should be excluded from public repositories (e.g github) since it contains your secret AWS key which should **never** be revealed to the public.   
 **Please note**. This no longer applies since the access keys and buckets are now specified in environmental variables and therefore the s3.yml file now contains just references to these environmental variables.
 2. Changing from local storage to S3 storage will require you to re-upload all your files (or copy the tree to s3)
-3. This module requires the RightAWS gem from RightScale (sudo gem install right_aws)
 
-##### Based on original work on S3 storage for BrowserCMS by [Neil Middleton](http://github.com/neilmiddleton/)
+## Contributors
+
+* Original work on S3 storage for BrowserCMS by [Neil Middleton](http://github.com/neilmiddleton/)
+* v2.1 by [Anthony Underwood](https://github.com/aunderwo)

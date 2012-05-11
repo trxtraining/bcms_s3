@@ -1,27 +1,40 @@
-# Add your own tasks in files placed in lib/tasks ending in .rake,
-# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
-
-
-require 'rake'
-
+#!/usr/bin/env rake
 begin
-  require 'jeweler'
-  Jeweler::Tasks.new do |gem|
-    gem.name = "bcms_s3"
-    gem.summary = %Q{This is a browsercms (browsercms.org) module to allow the facility to have attachments stored on Amazon S3. Also there is the option to change caching to suit heroku and/or use 'www' as the prefix for the non-cms site.
-Based on original work by Neil Middleton}
-    gem.email = "email2ants@gmail.com"
-    gem.homepage = "http://github.com/aunderwo/bcms_s3"
-    gem.authors = ["Anthony Underwood"]
-
-    gem.files = "lib/bcms_s3.rb"
-    gem.files << "lib/bcms_s3/routes.rb"
-    gem.files << "lib/bcms_s3/s3_module.rb"
-    gem.files << "templates/blank.rb"
-
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
-  end
-  Jeweler::GemcutterTasks.new
+  require 'bundler/setup'
 rescue LoadError
-  puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
+  puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
 end
+begin
+  require 'rdoc/task'
+rescue LoadError
+  require 'rdoc/rdoc'
+  require 'rake/rdoctask'
+  RDoc::Task = Rake::RDocTask
+end
+
+RDoc::Task.new(:rdoc) do |rdoc|
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title    = 'BcmsS3'
+  rdoc.options << '--line-numbers'
+  rdoc.rdoc_files.include('README.rdoc')
+  rdoc.rdoc_files.include('lib/**/*.rb')
+end
+
+APP_RAKEFILE = File.expand_path("../test/dummy/Rakefile", __FILE__)
+load 'rails/tasks/engine.rake'
+
+
+
+Bundler::GemHelper.install_tasks
+
+require 'rake/testtask'
+
+Rake::TestTask.new(:test) do |t|
+  t.libs << 'lib'
+  t.libs << 'test'
+  t.pattern = 'test/**/*_test.rb'
+  t.verbose = false
+end
+
+
+task :default => :test

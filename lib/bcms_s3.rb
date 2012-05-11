@@ -1,2 +1,5 @@
-require 'bcms_s3/routes'
-require 'bcms_s3/s3_module'
+require "bcms_s3/engine"
+require "bcms_s3/routes"
+
+module BcmsS3
+end
