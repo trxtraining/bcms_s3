@@ -50,8 +50,10 @@ Which will use the same bucket in development, testing and production. Or in an 
 
 ## Remaining todos
 
+1. Final 3.5.0 release 
+1. Ensure :style param works for S3 (since it does in core now)
 1. cname's don't work currently
-2. Attachments are public
+1. Attachments are public
 
 ## Using this module with [Heroku](http://heroku.com)
 
